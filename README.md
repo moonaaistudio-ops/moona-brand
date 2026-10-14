@@ -13,7 +13,7 @@
    ```
    It holds every token (`--moona-*`, `--font-*`, `--r-*`), the Hebrew swap, and every component class (`mn-*`, `mn-doc*`, `mn-quote*`).
    Where an external stylesheet is not allowed, copy `moona.css` into the page.
-3. Start a client brief from `examples/brief.html` and a quote from `examples/quote.html`. Replace every `[placeholder]`.
+3. Start a client brief from `examples/brief.html`, a quote page from `examples/quote-web.html` and its PDF from `examples/quote.html`. Replace every `[placeholder]`.
 4. Logos are in `logos/`. Use them as files; never redraw them.
 5. `tokens.json` has the same values as data, with a usage note on each.
 
@@ -22,7 +22,8 @@
 | `moona.css` | The whole design in one stylesheet |
 | `tokens.json` | Every colour, type style, radius, shadow, tracking and leading value, with usage notes |
 | `examples/brief.html` | A complete client brief page (Hebrew, RTL) |
-| `examples/quote.html` | A complete two-page A4 quote (Hebrew, RTL), prints to PDF |
+| `examples/quote-web.html` | A complete web quote page, as sent to clients (Hebrew, RTL) |
+| `examples/quote.html` | The two-page A4 PDF quote that goes with it |
 | `logos/` | Mark (SVG, PNG 512) and lockup (SVG) |
 
 ## Brand book
@@ -113,7 +114,7 @@ A typical block: a `Section` with a `SectionHeading` (eyebrow, title with one `<
 
 Briefs and quotes are the benchmark for anything Moona sends a client. They share the site's colours and logo but read as documents: Hebrew first, softer, more air. Build them from the `mn-doc` and `mn-quote` classes in `moona.css`.
 
-**Brief pages** (`DocHero`, `DocIdea`, `DocCards`, `DocClose`)
+**Brief pages** (`DocHero`, `DocIdea`, `DocCards`, `DocEpisodes`, `DocClose`). Good examples: GOOM (goom/v1), ecoLove (ecolove/v1), Marina (marina/brief).
 - `<html lang="he" dir="rtl">`, ground `moona-void`, side padding clamp(16px, 4vw, 56px), content max 1180px.
 - Text is Assistant (`hebrew`): base `brief-body` 18px in `moona-ice-hot`; every secondary line `brief-muted`, weight 300 in `moona-ice-mute`. Titles 600, card titles 700. No Space Grotesk headlines in a brief.
 - Eyebrows, numbers and the signature: `brief-label` mono uppercase, LTR, `moona-ice` or `moona-gold`. The eyebrows may be English ("The idea", "How we work").
@@ -122,8 +123,13 @@ Briefs and quotes are the benchmark for anything Moona sends a client. They shar
 - Every brief lives at `moonastudio.ai/<client>/v<n>/`, `noindex`. A new version is a new URL; never overwrite a link a client has.
 - One sample frame or film is enough; label free samples quietly at the top right (© MOONA / להמחשה בלבד).
 
-**Quotes** (`QuoteHeader`, `QuotePricing`, `QuoteProcess`, `QuoteTerms`)
-- A4 pages on `moona-void`, printed to PDF and DOCX from the quote template. Two pages: header, parties, opening, scope, pricing; then process, terms, not included, approval.
+**Web quote page** (`WebQuoteIncludes`, `WebQuotePrice`, `WebQuoteTerms`, `WebQuoteApprove`): the format sent to Marina on 07.10, the benchmark.
+- Same page language as a brief, at `moonastudio.ai/<client>/quote-v<n>/`. Top: eyebrow "MOONA STUDIO × CLIENT" with the lockup (`mn-doc__top`), then the hero with title "<project>. הצעת מחיר.", a sub-line, the format line and a gold link to the brief.
+- Order: what goes into an episode (numbered rows with English craft tags) → the price (tiers in a gold ledger) → how we work (the same rows, current step gold) → terms (bold-led paragraphs) → approval box (fields, checkbox, gold button, PDF link) → close with logos, signature and the legal line.
+- Prices in Space Grotesk on the left, "+ מע״מ" under them. The tier the client starts with is gold.
+
+**PDF quote** (`QuoteHeader`, `QuotePricing`, `QuoteProcess`, `QuoteTerms`)
+- Attached to every quote email, and the file the web page's PDF link opens. A4 pages on `moona-void`, printed to PDF and DOCX from the quote template. Two pages: header, parties, opening, scope, pricing; then process, terms, not included, approval.
 - Title "הצעת מחיר" in Space Grotesk 700 34px; everything else Assistant 11.5px; labels in 9px mono gold or ice.
 - No quote numbers (no MS-2026-xxx) on the page, in the file name or in the email. Title and date only.
 - Prices: a gold header row, tabular LTR amounts, the grand total in `moona-gold`. Describe the work each item needs; never argue for a discount.

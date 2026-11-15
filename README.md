@@ -25,6 +25,7 @@
 | `examples/quote-web.html` | A complete web quote page, as sent to clients (Hebrew, RTL) |
 | `examples/quote.html` | The two-page A4 PDF quote that goes with it |
 | `logos/` | Mark (SVG, PNG 512) and lockup (SVG) |
+| `motion/logo-reveal/` | The approved animated logo reveal (eclipse), 16:9 and 9:16, 4K and 1080, with its After Effects project and sound |
 
 ## Brand book
 
